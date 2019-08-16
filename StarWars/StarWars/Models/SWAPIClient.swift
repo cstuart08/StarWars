@@ -10,7 +10,7 @@ import Foundation
 
 //MARK: ---------------STARSHIP--------------//
 
-struct Starship: Codable {
+struct Starship: Codable, StarWarsItem {
     let name: String
     let model: String
     let manufacturer: String
@@ -48,11 +48,12 @@ struct Starship: Codable {
 
 struct StarshipTopLevelDictionary: Codable {
     let results: [Starship]
+    let next: String?
 }
 
 //MARK: ---------------PERSON--------------//
 
-struct Person: Codable {
+struct Person: Codable, StarWarsItem {
     let name: String
     let height: String
     let mass: String
@@ -80,18 +81,20 @@ struct Person: Codable {
 
 struct PersonTopLevelDictionary: Codable {
     let results: [Person]
+    let next: String?
 }
 
 
 //MARK: ---------------FILM---------------//
 
-struct Film: Codable {
-    let title: String
+struct Film: Codable, StarWarsItem {
+    
+    let name: String
     let episodeId: Int?
     let openingCrawl: String?
     let director: String
     let producer: String
-    let release_date: String
+    let releaseDate: String
     let characters: [String]
     let planets: [String]
     let starships: [String]
@@ -100,32 +103,33 @@ struct Film: Codable {
     let created: String
     let edited: String
     let url: String
-}
 
-enum CodingKeys: String, CodingKey {
-    case title
-    case episodeId = "episode_id"
-    case openingCrawl = "opening_crawl"
-    case director
-    case producer
-    case releaseDate = "release_date"
-    case characters
-    case planets
-    case starships
-    case vehicles
-    case species
-    case created
-    case edited
-    case url
+    enum CodingKeys: String, CodingKey {
+        case name = "title"
+        case episodeId = "episode_id"
+        case openingCrawl = "opening_crawl"
+        case director
+        case producer
+        case releaseDate = "release_date"
+        case characters
+        case planets
+        case starships
+        case vehicles
+        case species
+        case created
+        case edited
+        case url
+}
 }
 
 struct FilmTopLevelDictionary: Codable {
     let results: [Film]
+    let next: String?
 }
 
 //MARK: ---------------VEHICLE---------------//
 
-struct Vehicle: Codable {
+struct Vehicle: Codable, StarWarsItem {
     let name: String
     let model: String
     let manufacturer: String
@@ -161,18 +165,19 @@ struct Vehicle: Codable {
 
 struct VehicleTopLevelDictionary: Codable {
     let results: [Vehicle]
+    let next: String?
 }
 
 //MARK: ---------------PLANET---------------//
 
-struct Planet: Codable {
+struct Planet: Codable, StarWarsItem {
     let name: String
     let rotationPeriod: String
     let orbitalPeriod: String
     let diameter: String
     let climate: String
     let gravity: String
-    let terrian: String
+    let terrian: String?
     let surfaceWater: String
     let population: String
     let residents: [String]
@@ -197,11 +202,12 @@ struct Planet: Codable {
 
 struct PlanetTopLevelDictionary: Codable {
     let results: [Planet]
+    let next: String?
 }
 
 //MARK: ---------------SPECIES---------------//
 
-struct Species: Codable {
+struct Species: Codable, StarWarsItem {
     let name: String
     let classification: String
     let designation: String
@@ -210,7 +216,7 @@ struct Species: Codable {
     let hairColors: String
     let eyeColors: String
     let averageLifespan: String
-    let homeworld: String
+    let homeworld: String?
     let language: String
     let people: [String]
     let films: [String]
@@ -235,4 +241,14 @@ struct Species: Codable {
 
 struct SpeciesTopLevelDictionary: Codable {
     let results: [Species]
+    let next: String?
+}
+
+enum StarWarsType {
+    case Person
+    case Starship
+    case Planet
+    case Species
+    case Vehicle
+    case Film
 }

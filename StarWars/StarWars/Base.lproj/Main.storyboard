@@ -1,31 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="vhQ-FY-pOW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kga-db-1je">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
-        <scene sceneID="gvp-FL-Lfz">
+        <!--Star Wars View Controller-->
+        <scene sceneID="yz2-YP-HhY">
             <objects>
-                <tableViewController id="TdJ-hk-ALJ" customClass="StarshipsTableViewController" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="NiY-ts-8zc">
+                <viewController id="81c-om-OFC" customClass="StarWarsViewController" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DvP-bi-lSk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="arn-1N-XZ9">
+                                <rect key="frame" x="153" y="132" width="108" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="PEOPLE"/>
+                                <connections>
+                                    <segue destination="Inc-0g-Udd" kind="show" identifier="peopleSegue" id="QSc-MD-K0K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYC-3A-527">
+                                <rect key="frame" x="139" y="253" width="137" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="VEHICLES"/>
+                                <connections>
+                                    <segue destination="Inc-0g-Udd" kind="show" identifier="vehicleSegue" id="iaW-ap-Ufd"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="phZ-sc-9he">
+                                <rect key="frame" x="144" y="320" width="128" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="PLANETS"/>
+                                <connections>
+                                    <segue destination="Inc-0g-Udd" kind="show" identifier="planetSegue" id="IRi-qj-AUm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBi-uh-acc">
+                                <rect key="frame" x="167" y="394" width="83" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="FILMS"/>
+                                <connections>
+                                    <segue destination="Inc-0g-Udd" kind="show" identifier="filmsSegue" id="pBb-bs-059"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Duc-sj-qu4">
+                                <rect key="frame" x="151" y="467" width="116" height="48"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="SPECIES"/>
+                                <connections>
+                                    <segue destination="Inc-0g-Udd" kind="show" identifier="speciesSegue" id="ewr-Vf-8Ie"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlw-z7-vGT">
+                                <rect key="frame" x="130" y="188" width="154" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="STARSHIPS"/>
+                                <connections>
+                                    <segue destination="Inc-0g-Udd" kind="show" identifier="starshipsSegue" id="19k-yN-rp6"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="arn-1N-XZ9" firstAttribute="centerX" secondItem="rlw-z7-vGT" secondAttribute="centerX" id="7js-mm-erS"/>
+                            <constraint firstItem="rlw-z7-vGT" firstAttribute="top" secondItem="arn-1N-XZ9" secondAttribute="bottom" constant="8" symbolic="YES" id="8oO-JK-cLG"/>
+                            <constraint firstItem="arn-1N-XZ9" firstAttribute="centerX" secondItem="DvP-bi-lSk" secondAttribute="centerX" id="Lkf-jE-HI8"/>
+                            <constraint firstItem="arn-1N-XZ9" firstAttribute="top" secondItem="8jv-oZ-gGA" secondAttribute="top" constant="44" id="qZ3-hV-flc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8jv-oZ-gGA"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="peJ-h2-NHl"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OGf-TB-5dR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-923" y="144"/>
+        </scene>
+        <!--Star Wars Table View Controller-->
+        <scene sceneID="mYq-2z-8jo">
+            <objects>
+                <tableViewController id="Inc-0g-Udd" customClass="StarWarsTableViewController" customModule="StarWars" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="icG-qO-mpc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarshipCell" textLabel="7EG-xc-uLe" style="IBUITableViewCellStyleDefault" id="VfD-MI-0PG">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StarshipCell" textLabel="4pH-rc-PUT" style="IBUITableViewCellStyleDefault" id="OZG-SQ-B8f">
                                 <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VfD-MI-0PG" id="SoU-4c-gGp">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OZG-SQ-B8f" id="Q0g-pf-tq1">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7EG-xc-uLe">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4pH-rc-PUT">
                                             <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -37,31 +114,35 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="TdJ-hk-ALJ" id="P2d-qq-fsr"/>
-                            <outlet property="delegate" destination="TdJ-hk-ALJ" id="qMM-fK-spJ"/>
+                            <outlet property="dataSource" destination="Inc-0g-Udd" id="lTE-e1-7LB"/>
+                            <outlet property="delegate" destination="Inc-0g-Udd" id="jho-iE-emE"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="H6n-ay-NHr"/>
                 </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="vAM-Xr-YRE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d2x-F8-9e3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-32" y="95"/>
+            <point key="canvasLocation" x="-138" y="144"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="AV4-77-B5j">
+        <scene sceneID="KW5-Sp-aSt">
             <objects>
-                <navigationController id="vhQ-FY-pOW" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Bgi-bM-Osn">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kga-db-1je" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0UG-7m-RjM">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="TdJ-hk-ALJ" kind="relationship" relationship="rootViewController" id="bDX-7F-cZe"/>
+                        <segue destination="81c-om-OFC" kind="relationship" relationship="rootViewController" id="6ma-xW-uwd"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EhR-ZD-W6R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hxq-Og-ypQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-826" y="95"/>
+            <point key="canvasLocation" x="-1748" y="144"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="19k-yN-rp6"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -1,5 +1,5 @@
 //
-//  Vehicle.swift
+//  VehicleController.swift
 //  StarWars
 //
 //  Created by Apps on 8/15/19.
@@ -10,13 +10,22 @@ import Foundation
 
 class VehicleController {
     
-    static func fetchAllVehicles(completion: @escaping ([Vehicle]) -> Void) {
+    static var vehicles: [Vehicle] = []
+    
+    static func fetchAllVehicles(pageNumber: Int = 1, completion: @escaping ([Vehicle]) -> Void) {
         
         guard var baseURL = URL(string: "https://swapi.co/api/") else { completion([]); return }
         
         baseURL.appendPathComponent("vehicles")
+        var finalURL = baseURL
+        if pageNumber > 1 {
+            var components = URLComponents(url: finalURL, resolvingAgainstBaseURL: true)
+            components?.queryItems = [URLQueryItem(name: "page", value: "\(pageNumber)")]
+            guard let tempURL = components?.url else { return }
+            finalURL = tempURL
+        }
         
-        URLSession.shared.dataTask(with: baseURL) { (data, _, error) in
+        URLSession.shared.dataTask(with: finalURL) { (data, _, error) in
             
             if let error = error {
                 print("Error creating a URL Session. \(#function) - \(error) - \(error.localizedDescription)")
@@ -34,7 +43,13 @@ class VehicleController {
                 let decoder = JSONDecoder()
                 let topLevelDictionary = try decoder.decode(VehicleTopLevelDictionary.self, from: data)
                 print("Success getting vehicles.")
-                completion(topLevelDictionary.results)
+                vehicles.append(contentsOf: topLevelDictionary.results)
+                if topLevelDictionary.next != nil {
+                    fetchAllVehicles(pageNumber: pageNumber + 1, completion: completion)
+                } else {
+                
+                    completion(vehicles)
+                }
             } catch {
                 print("Error getting the film array. \(#function) - \(error) - \(error.localizedDescription)")
                 completion([])

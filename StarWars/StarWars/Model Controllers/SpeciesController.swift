@@ -1,5 +1,5 @@
 //
-//  FilmController.swift
+//  SpeciesController.swift
 //  StarWars
 //
 //  Created by Apps on 8/15/19.
@@ -8,15 +8,15 @@
 
 import Foundation
 
-class FilmController {
+class SpeciesController {
     
-    static var films: [Film] = []
+    static var species: [Species] = []
     
-    static func fetchAllFilms(pageNumber: Int = 1, completion: @escaping ([Film]) -> Void) {
+    static func fetchAllSpecies(pageNumber: Int = 1, completion: @escaping ([Species]) -> Void) {
         
         guard var baseURL = URL(string: "https://swapi.co/api/") else { completion([]); return }
         
-        baseURL.appendPathComponent("films")
+        baseURL.appendPathComponent("species")
         var finalURL = baseURL
         if pageNumber > 1 {
             var components = URLComponents(url: finalURL, resolvingAgainstBaseURL: true)
@@ -41,19 +41,19 @@ class FilmController {
             
             do {
                 let decoder = JSONDecoder()
-                let topLevelDictionary = try decoder.decode(FilmTopLevelDictionary.self, from: data)
-                print("Success getting films.")
-                films.append(contentsOf: topLevelDictionary.results)
+                let topLevelDictionary = try decoder.decode(SpeciesTopLevelDictionary.self, from: data)
+                print("Success getting species.")
+                species.append(contentsOf: topLevelDictionary.results)
                 if topLevelDictionary.next != nil {
-                    fetchAllFilms(pageNumber: pageNumber + 1, completion: completion)
+                    fetchAllSpecies(pageNumber: pageNumber + 1, completion: completion)
                 } else {
-                    completion(films)
+                    completion(species)
                 }
             } catch {
-                print("Error getting the film array. \(#function) - \(error) - \(error.localizedDescription)")
+                print("Error getting the species array. \(#function) - \(error) - \(error.localizedDescription)")
                 completion([])
             }
-            }.resume()
+        }.resume()
         return
     }
 }

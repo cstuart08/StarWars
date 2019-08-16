@@ -1,5 +1,5 @@
 //
-//  FilmController.swift
+//  PlanetController.swift
 //  StarWars
 //
 //  Created by Apps on 8/15/19.
@@ -8,15 +8,15 @@
 
 import Foundation
 
-class FilmController {
+class PlanetController {
     
-    static var films: [Film] = []
+    static var planets: [Planet] = []
     
-    static func fetchAllFilms(pageNumber: Int = 1, completion: @escaping ([Film]) -> Void) {
+    static func fetchAllPlanets(pageNumber: Int = 1, completion: @escaping ([Planet]) -> Void) {
         
         guard var baseURL = URL(string: "https://swapi.co/api/") else { completion([]); return }
         
-        baseURL.appendPathComponent("films")
+        baseURL.appendPathComponent("planets")
         var finalURL = baseURL
         if pageNumber > 1 {
             var components = URLComponents(url: finalURL, resolvingAgainstBaseURL: true)
@@ -26,7 +26,6 @@ class FilmController {
         }
         
         URLSession.shared.dataTask(with: finalURL) { (data, _, error) in
-            
             if let error = error {
                 print("Error creating a URL Session. \(#function) - \(error) - \(error.localizedDescription)")
                 completion([])
@@ -41,19 +40,19 @@ class FilmController {
             
             do {
                 let decoder = JSONDecoder()
-                let topLevelDictionary = try decoder.decode(FilmTopLevelDictionary.self, from: data)
-                print("Success getting films.")
-                films.append(contentsOf: topLevelDictionary.results)
+                let topLevelDictionary = try decoder.decode(PlanetTopLevelDictionary.self, from: data)
+                print("Success getting planets.")
+                planets.append(contentsOf: topLevelDictionary.results)
                 if topLevelDictionary.next != nil {
-                    fetchAllFilms(pageNumber: pageNumber + 1, completion: completion)
+                    fetchAllPlanets(pageNumber: pageNumber + 1, completion: completion)
                 } else {
-                    completion(films)
+                    completion(planets)
                 }
             } catch {
-                print("Error getting the film array. \(#function) - \(error) - \(error.localizedDescription)")
+                print("Error getting the planet array. \(#function) - \(error) - \(error.localizedDescription)")
                 completion([])
             }
-            }.resume()
+        }.resume()
         return
     }
 }
